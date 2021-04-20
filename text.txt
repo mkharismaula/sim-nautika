@@ -1,0 +1,21 @@
+[USER]
+nama : string
+email : string
+imageUrl : string
+tglPindah : date
+isNotif : boolean
+kapalLama : KAPAL.namaKapal
+kapalBaru : KAPAL.namaKapal
+
+[KAPAL]
+namaKapal : string
+jenis : string
+maxAwak : Number
+awakTerisi : Number => ketika di klik muncul daftar abk yang menempati
+status : string (patroli,sandar)
+
+[MUTASI]
+tglPindah : USER.tglPindah
+atasNama : USER.nama
+dari : USER.kapalLama
+ke : USER.kapalBaru

@@ -1,0 +1,46 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Table Kapal</h4>
+        <h6 class="card-subtitle">Kapal kapal milik PSO BC TBK <code>&lt;-&gt;</code>.</h6>
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nama Kapal</th>
+                    <th scope="col">Jenis Kapal</th>
+                    <th scope="col">Max ABK</th>
+                    <th scope="col">Awak Terisi</th>
+                    <th scope="col">User Id</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i = 0; i < kapal.length; i++) { %>
+                <tr>
+                    <th scope="row"><%= i + 1  %></th>
+                    <td><%= kapal[i].namaKapal %></td>
+                    <td><%= kapal[i].jenisKapal %></td>
+                    <td><%= kapal[i].maxAwak %></td>
+                    <td><%= kapal[i].awakTerisi %></td>
+                    <td><%= kapal[i].userId.length %></td>
+                    <td><%= kapal[i].status %></td>
+                    <td>
+                        <form action="/admin/kapal/<%= kapal[i].id %>?_method=DELETE" method="POST">
+                            <a href="/admin/kapal/<%= kapal[i].id %>">
+                                <i class="mdi mdi-eye"></i>
+                            </a>
+                            <i class="mdi mdi-eyedropper"></i>
+                            <button type="submit" class="btn btn-danger btn-circle btn-sm">
+                                <i class="mdi mdi-delete-forever"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>

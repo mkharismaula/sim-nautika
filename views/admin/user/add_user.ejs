@@ -1,0 +1,119 @@
+<div class="col-lg-8 col-xlg-9 col-md-7">
+    <div class="card">
+        <div class="card-body">
+            <form class="form-horizontal form-material" action="/admin/user" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class="col-md-12">Nama Lengkap ABK</label>
+                    <div class="col-md-12">
+                        <input type="text" name="nama" class="form-control form-control-line"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="example-email" class="col-md-12">Email</label>
+                    <div class="col-md-12">
+                        <input type="email" placeholder="@gmail.com" class="form-control form-control-line" name="email" id="example-email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-12">Foto Profile</label>
+                    <div class="col-md-12">
+                        <input type="file" class="form-control" name="imageUrl"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-12">Kapal Saat Ini</label>
+                    <div class="col-sm-12">
+                        <select class="form-control form-control-line" name="kapalSaatIni">
+                            <option>--- option ---</option>
+                            <% for(let i = 0; i < kapal.length; i++) { %>
+                                    <option value="<%= kapal[i]._id %>"><%= kapal[i].namaKapal %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                    <fieldset disabled class="col-md-12">
+                        <label for="disabledTextInput">Kapal Saat Ini</label>
+                        <input type="text" id="kapalSaatIni" class="form-control" name="kapalSaatIni" placeholder="...">
+                    </fieldset>
+                </div> -->
+                <div class="form-group">
+                    <fieldset disabled class="col-md-12">
+                        <label for="disabledTextInput">Status Kapal</label>
+                        <input type="text" id="statusKapal" class="form-control" name="statusKapal" placeholder="...">
+                    </fieldset>
+                </div>
+                <div class="form-group row p-t-20 col-md-12">
+                    <h5>Kualifikasi Tugas :</h5>
+                    <div class="col-sm-4">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1" name="kualifikasiTugas" value="Captain">
+                            <label class="custom-control-label" for="customCheck1">Captain</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck2" name="kualifikasiTugas" value="Mualim I">
+                            <label class="custom-control-label" for="customCheck2">Mualim I</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck3" name="kualifikasiTugas" value="Mualim II">
+                            <label class="custom-control-label" for="customCheck3">Mualim II</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck4" name="kualifikasiTugas" value="Mualim III">
+                            <label class="custom-control-label" for="customCheck4">Mualim III</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck5" name="kualifikasiTugas" value="KKM">
+                            <label class="custom-control-label" for="customCheck5">KKM</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck6" name="kualifikasiTugas" value="Juru Minyak">
+                            <label class="custom-control-label" for="customCheck6">Juru Minyak</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck7" name="kualifikasiTugas" value="Bosun">
+                            <label class="custom-control-label" for="customCheck7">Bosun</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck8" name="kualifikasiTugas" value="Kelasi">
+                            <label class="custom-control-label" for="customCheck8">Kelasi</label>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                    <label class="col-md-12">Tanggal Pindah</label>
+                    <div class="col-md-12">
+                        <input type="date" placeholder="tgl..." name="tglPindah" class="form-control form-control-line">
+                    </div>
+                </div> -->
+                <!-- <div class="form-group">
+                    <label class="col-sm-12">Kapal Lama</label>
+                    <div class="col-sm-12">
+                        <select class="form-control form-control-line" name="kapalLama">
+                            <option>--- option ---</option>
+                            <% for(let i = 0; i < kapal.length; i++) { %>
+                            <option value="<%= kapal[i].namaKapal %>"><%= kapal[i].namaKapal %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-12">Kapal Baru</label>
+                    <div class="col-sm-12">
+                        <select class="form-control form-control-line" name="kapalBaru">
+                            <option>--- option ---</option>
+                            <% for(let i = 0; i < kapal.length; i++) { %>
+                            <option value="<%= kapal[i].namaKapal %>"><%= kapal[i].namaKapal %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                </div> -->
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button class="btn btn-success" type="submit">Update Profile</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

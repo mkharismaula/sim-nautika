@@ -1,0 +1,227 @@
+<%- include('../../partials/header.ejs') %>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full" data-boxed-layout="full">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <%- include('../../partials/navbar.ejs') %>
+        <!-- ============================================================== -->
+        <%- include('../../partials/sidebar.ejs') %>
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-5 align-self-center">
+                        <h4 class="page-title">Dashboard
+                        </h4>
+                    </div>
+                    <div class="col-7 align-self-center">
+                        <div class="d-flex align-items-center justify-content-end">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="#">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">Starter Page</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <div class="col-12 row">
+                    <!-- <div class="card col-6">
+                        <div class="card-body">
+                            <h4 class="card-title">Daftar Mutasi</h4>
+                            <h6 class="card-subtitle">Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</h6>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">_id ABK</th>
+                                        <th scope="col">Tanggal Mutasi</th>
+                                        <th scope="col">Bulan</th>
+                                        <th scope="col">Jumlah</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for(let i = 0; i < mutasi.length; i++) { %>
+                                    <tr>
+                                        <th scope="row"><%= i + 1 %></th>
+                                        <td><%= mutasi[i].idAbk.nama %></td>
+                                        <td><%= moment(mutasi[i].tglMutasi).format('DD-MM-YYYY') %></td>
+                                        <% const tanggal = moment(mutasi[i].tglMutasi).format('MM') %>
+                                        <% switch (tanggal) {
+                                            case '01' : %>
+                                                    <td>Januari</td>
+                                                    <% break;
+                                            
+                                            case '02' : %>
+                                                    <td>February</td>
+                                                    <% break;
+                                            
+                                            case '03' : %>
+                                                    <td>Maret</td>
+                                                    <% break;
+
+                                            case '04' : %>
+                                                    <td>April</td>
+                                                    <% break;
+
+                                            case '05' : %>
+                                                    <td>Mei</td>
+                                                    <% break;
+
+                                            case '06' : %>
+                                                    <td>Juni</td>
+                                                    <% break;
+
+                                            case '07' : %>
+                                                    <td>Juli</td>
+                                                    <% break;
+
+                                            case '08' : %>
+                                                    <td>Agustus</td>
+                                                    <% break;
+
+                                            case '09' : %>
+                                                    <td>September</td>
+                                                    <% break;
+
+                                            case '10' : %>
+                                                    <td>Oktober</td>
+                                                    <% break;
+
+                                            case '11' : %>
+                                                    <td>November</td>
+                                                    <% break;
+
+                                            case '12' : %>
+                                                    <td>Desember</td>
+                                                    <% break;
+                        
+                                            } %>
+                                    </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> -->
+
+                    <div class="col-6"  id="container-chart" style="width: 100%; height: 5%; background-color:white">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+                <div class="mt-10" style="margin-top: 10px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Daftar User</h4>
+                            <h6 class="card-subtitle">Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</h6>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nama</th>
+                                        <th scope="col">Kualifikasi Tugas</th>
+                                        <th scope="col">Kapal</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for(let x = 0; x < user.length; x++) { %>
+                                    <tr>
+                                        <th scope="row"><%= x + 1 %></th>
+                                        <td><%= user[x].nama %></td>
+                                        <td><%= user[x].kualifikasiTugas %></td>
+                                        <td><%= user[x].kapalSaatIni.namaKapal %></td>
+                                        <% const idKapal = user[x].kapalSaatIni._id %>
+                                        <td>
+                                            <form action="/admin/user/<%= user[x]._id %>/kapal/<%= idKapal %>?_method=DELETE" method="POST">
+                                                <button type="submit" class="btn btn-danger btn-circle btn-sm">
+                                                    <i class="mdi mdi-delete-forever"></i>
+                                                </button>
+                                                <a href="/admin/user/<%= user[x].id %>" class="btn btn-success btn-circle btn-sm">
+                                                    <i class="mdi mdi-account-card-details"></i>
+                                                </a>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <%- include('../../partials/footer.ejs') %>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <%- include('../../partials/js.ejs') %>
+    
+    <script>
+
+        // const Mutasi = require('../../models/mutasi.js');
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'bar',
+
+            // The data for our dataset
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','Agustus','September','Oktober','November','Desember'],
+                datasets: [{
+                    label: 'data',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [5, 10, 5, 3, 11, 14, 7, 8, 10, 4, 3, 6]
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
+        
+        // getData();
+
+        // async function getData() {
+        //     const mutasi = await Mutasi.find().populate('idAbk');
+        // }
+
+    </script>
+</body>

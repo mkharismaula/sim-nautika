@@ -1,0 +1,56 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Striped rows</h4>
+        <h6 class="card-subtitle">Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</h6>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nama ABK</th>
+                    <th scope="col">Jabatan</th>
+                    <th scope="col">Kapal</th>
+                    <th scope="col">Pindah Ke</th>
+                    <th scope="col">Hari Mutasi</th>
+                    <th scope="col">Action</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let z = 0; z < user.length; z++) { %>
+                <form action="/admin/mutasi" method="POST">
+                    <tr>
+                        <th scope="row"><%= z + 1 %></th>
+                        <td style="display:none;">
+                            <input type="hidden" name="idUser" value="<%= user[z]._id %>"/>
+                        </td>
+                        <td><%= user[z].nama %></td>
+                        <td><%= user[z].kualifikasiTugas %></td>
+                        <td id="kapalLama"><%= user[z].kapalSaatIni.namaKapal %></td>
+                        <td style="display:none;">
+                            <input type="hidden" name="idKapalLama" value="<%= user[z].kapalSaatIni._id %>"/>
+                        </td>
+                        <td id="kapalBaru">
+                            <div class="form-group">
+                                    <select class="form-control form-control-line idKapalBaru" name="idKapalBaru" id="idKapalBaru">
+                                        <option>--- option ---</option>
+                                        <% for(let i = 0; i < kapal.length; i++) { %>
+                                        <option value="<%= kapal[i]._id %>"><%= kapal[i].namaKapal %></option>
+                                        <% } %>
+                                    </select>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="date" class="form-control" name="tglMutasi"/>
+                        </td>
+                        <td>
+                            <button class="btn btn-success" type="submit">Mutasi</button>
+                        </td>
+                    </tr>
+                </form>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
